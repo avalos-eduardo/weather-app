@@ -7,6 +7,7 @@ export async function displayWeatherData(dataset){
     const humidity = dataset.currentConditions.humidity;
     const windSpeed = dataset.currentConditions.windspeed;
     const time = dataset.currentConditions.datetime;
+    const icon = document.querySelector("#icon");
 
     locationText.innerHTML = `${location}`;
     tempText.innerHTML = `${temperature}°F`;
@@ -15,11 +16,17 @@ export async function displayWeatherData(dataset){
     windSpeedText.innerHTML = `Wind Speed: ${windSpeed} mph`;
 
     if (time >= "06:00:00" && time <= "18:00:00"){
-        displayedWeatherIcon.innerHTML = `☀️ <p>${time}</p>`;
+        icon.setAttribute("src", "https://static.vecteezy.com/system/resources/previews/022/095/765/non_2x/cartoon-sun-icon-with-facial-expression-free-png.png");
+        icon.setAttribute("height", "200px");
+        icon.setAttribute("width", "200px");
+        timeText.innerHTML = `${time}`;
 
     }
     else{
         console.log(time);
-        displayedWeatherIcon.innerHTML = `🌠 <p>${time}</p>`;
+        icon.setAttribute("src", "https://static.vecteezy.com/system/resources/thumbnails/018/931/352/small_2x/cartoon-moon-icon-png.png");
+        icon.setAttribute("height", "200px");
+        icon.setAttribute("width", "200px");
+        timeText.innerHTML = `${time}`;
     }
 }
